@@ -1,0 +1,118 @@
+<div class="container mt-4">
+  <div *ngIf="step === 1">
+    <h2>Registration - Step 1</h2>
+    <form [formGroup]="registrationForm" novalidate>
+      <!-- Email Input -->
+      <div class="form-group">
+        <label for="login">Login (Email)</label>
+        <input
+          id="login"
+          type="text"
+          formControlName="login"
+          class="form-control"
+          placeholder="Enter your email"
+        />
+        <small *ngIf="registrationForm.get('login')?.touched && registrationForm.get('login')?.hasError('required')" class="form-text error-text">
+          Login is required.
+        </small>
+        <small *ngIf="registrationForm.get('login')?.touched && registrationForm.get('login')?.hasError('email')" class="form-text error-text">
+          Please enter a valid email address.
+        </small>
+      </div>
+
+      <!-- Password Input -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter your password"
+        />
+        <small *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.hasError('required')" class="form-text error-text">
+          Password is required.
+        </small>
+        <small *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.hasError('minlength')" class="form-text error-text">
+          Password must be at least 6 characters.
+        </small>
+        <small *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.hasError('pattern')" class="form-text error-text">
+          Password must contain at least one letter and one digit.
+        </small>
+      </div>
+
+      <!-- Confirm Password Input -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Confirm your password"
+        />
+        <small *ngIf="registrationForm.get('confirmPassword')?.touched && registrationForm.get('confirmPassword')?.hasError('required')" class="form-text error-text">
+          Confirm Password is required.
+        </small>
+        <small *ngIf="registrationForm.errors?.['notMatching'] && registrationForm.get('confirmPassword')?.touched" class="form-text error-text">
+          Passwords do not match.
+        </small>
+      </div>
+
+      <!-- Checkbox Group -->
+      <div class="form-group form-check">
+        <label class="form-check-label" for="agree">
+          <input id="agree" type="checkbox" formControlName="agree" class="form-check-input">
+          Agree to work for Food
+        </label>
+        <small *ngIf="registrationForm.get('agree')?.touched && registrationForm.get('agree')?.invalid" class="form-text error-text">
+          You must agree before proceeding.
+        </small>
+      </div>
+
+      <!-- Next Button -->
+      <button type="button" class="btn btn-primary" (click)="nextStep()">Next</button>
+    </form>
+  </div>
+
+  <div *ngIf="step === 2">
+    <h2>Registration - Step 2</h2>
+    <form [formGroup]="registrationForm" novalidate>
+      <!-- Country Select -->
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select id="country" formControlName="country" class="form-control" (change)="onCountryChange($event)">
+          <option value="">Select Country</option>
+          <option *ngFor="let country of countries" [value]="country.id">
+            {{ country.name }}
+          </option>
+        </select>
+        <small *ngIf="registrationForm.get('country')?.touched && registrationForm.get('country')?.invalid" class="form-text error-text">
+          Country is required.
+        </small>
+      </div>
+
+      <!-- Province Select -->
+      <div class="form-group">
+        <label for="province">Province</label>
+        <select id="province" formControlName="province" class="form-control">
+          <option value="">Select Province</option>
+          <option *ngFor="let province of provinces" [value]="province.id">
+            {{ province.name }}
+          </option>
+        </select>
+        <small *ngIf="registrationForm.get('province')?.touched && registrationForm.get('province')?.invalid" class="form-text error-text">
+          Province is required.
+        </small>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+    </form>
+  </div>
+
+  <p class="switch-link">
+    Have an account?
+    <a routerLink="/login">Login here</a>
+  </p>
+</div>

@@ -1,0 +1,71 @@
+<div class="container mt-4">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Enter your email"
+      />
+      <small
+        *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')"
+        class="form-text error-text"
+      >
+        Email is required.
+      </small>
+      <small
+        *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')"
+        class="form-text error-text"
+      >
+        Please enter a valid email address.
+      </small>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter your password"
+      />
+      <small
+        *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')"
+        class="form-text error-text"
+      >
+        Password is required.
+      </small>
+    </div>
+
+    <!-- Checkbox Field -->
+    <div class="form-check">
+      <input
+        id="rememberMe"
+        type="checkbox"
+        formControlName="rememberMe"
+        class="form-check-input"
+      />
+      <label for="rememberMe" class="form-check-label">Remember Me</label>
+    </div>
+
+    <!-- Error Message (if any) -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+
+  <!-- Switch Link -->
+  <p class="switch-link">
+    Don't have an account?
+    <a routerLink="/registration">Register here</a>
+  </p>
+</div>

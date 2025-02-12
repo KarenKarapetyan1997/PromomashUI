@@ -1,0 +1,143 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #3a0978, #0dbfd6);
+  padding: 20px;
+}
+
+:host-context(body) {
+  background: linear-gradient(135deg, #3a0978, #0dbfd6);
+}
+
+/* Main Container */
+.container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(45deg, #3a0978, #0dbfd6);
+  z-index: -1;
+  border-radius: 16px;
+}
+
+/* Header */
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #3a0978;
+  font-weight: 600;
+}
+
+/* Form Group */
+.form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Label Styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Input & Select Styling */
+.form-control {
+  width: 100%;
+  padding: 12px; /* Uniform padding on all sides */
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #3a0978;
+  box-shadow: 0 0 8px rgba(58, 9, 120, 0.3);
+  outline: none;
+}
+
+/* Checkbox Container */
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-check-input {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+.form-check-label {
+  font-size: 16px;
+  color: #555;
+  vertical-align: middle;
+}
+
+/* Button Styling */
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #3a0978;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #2f0761;
+}
+
+.btn-success {
+  background-color: #0dbfd6;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #0aaabf;
+}
+
+/* Error Text */
+.form-text,
+.error-text {
+  font-size: 14px;
+  color: #e74c3c;
+}
+
+/* Switch Link Styling */
+.switch-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.switch-link a {
+  color: #3a0978;
+  text-decoration: underline;
+  cursor: pointer;
+}
